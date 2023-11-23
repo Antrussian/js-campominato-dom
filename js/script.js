@@ -53,23 +53,14 @@ function generaGrigliaGioco(numeroIndice) {
 
     wrapper.innerHTML = '';
 
-    let numeriCasualiGenerati = [];
+
+ 
 
     let bombe = [];
 
 
 
 
-
-    for (let i = 1; i <= numeroIndice; i++) {
-        let numeroCasuale;
-
-        do {
-            numeroCasuale = Math.floor(Math.random() * numeroIndice) + 1;
- } while (numeriCasualiGenerati.includes(numeroCasuale));
-
-        numeriCasualiGenerati.push(numeroCasuale);
-}
 
 
 
@@ -121,7 +112,7 @@ square.innerText = i;
         }
       });
 
-
+     
 
         wrapper.appendChild(square);
     }
