@@ -1,0 +1,102 @@
+/*reset
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     background-color: aquamarine;
+     font-family: Helvetica, sans-serif;
+}
+
+.button-start {
+    width: 80px;
+    height: 20px;
+}
+
+
+
+
+.quadrato {
+    
+  
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.easy {
+    width: calc(100% / 10);
+    height:  calc(100% / 10);
+}
+
+.medium {
+    width: calc(100% / 9);
+    height:  calc(100% / 9);
+}
+
+
+.hard {
+    width: calc(100% / 7);
+    height:  calc(100% / 7);
+}
+
+p {
+    font-size: 40px;
+    color: rgb(16, 16, 128);
+}
+
+.img-logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+
+.main-contaniner {
+  width:1200px;
+    height: 1200px;
+   display: flex;
+   flex-direction: column;
+ 
+   
+    align-items: center;
+   
+   
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+
+.wrapper {
+    
+    display: flex;
+    padding: 20px 40px 20px 40px;
+   height: 60%;
+   width: 60%;
+ 
+    flex-wrap: wrap;
+    
+}
+
+
+.lightblue {
+    background-color: rgb(65, 188, 255);
+}
+
+
+.bomba-class {
+    background-color: red;
+}
