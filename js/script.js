@@ -8,7 +8,10 @@ In seguito l'utente clicca su una cella: se il numero è presente nella lista de
 - abbiamo calpestato una bomba
 - la cella si colora di rosso e la partita termina.
 Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+
+La partita termina quando il giocatore clicca su una bomba 
+
+o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 BONUS esclusivamente se ho concluso l'esercizio correttamente:
 Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
@@ -22,8 +25,8 @@ Di cosa ho bisogno per generare i numeri?
 Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 Le validazioni e i controlli possiamo farli anche in un secondo momento.*/
 
-
 let difficolta = 0;
+
 let caselleCliccate = 0;
 
 let selectlivelloUtente = document.getElementById('livello-utente');
@@ -32,11 +35,8 @@ let selectlivelloUtente = document.getElementById('livello-utente');
 
 
 document.getElementById('start-game').addEventListener('click', function () {
-
     difficolta = parseInt(selectlivelloUtente.value);
-
     generaGrigliaGioco(difficolta);
-
 });
 
 
@@ -46,41 +46,41 @@ document.getElementById('start-game').addEventListener('click', function () {
 
 
 
-
 function generaGrigliaGioco(numeroIndice) {
-
     let wrapper = document.querySelector('.wrapper');
+
 
     wrapper.innerHTML = '';
 
 
- 
+
+
 
     let bombe = [];
 
 
 
-
-
-
-
-
-
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 0; i < 16; i++) {
         let bombaCasuale;
+
 
         do {
             bombaCasuale = Math.floor(Math.random() * numeroIndice) + 1;
-      } while (bombe.includes(bombaCasuale));
+
+        } while (bombe.includes(bombaCasuale));
 
         bombe.push(bombaCasuale);
- }
+    }
+
+
 
 
 
 
     for (let i = 1; i <= numeroIndice; i++) {
+
         let square = document.createElement('div');
+
         square.classList.add('quadrato');
 
         if (numeroIndice === 81) {
@@ -92,30 +92,47 @@ function generaGrigliaGioco(numeroIndice) {
         }
 
 
-
-square.innerText = i;
-
+        square.innerText = i;
 
 
 
         square.addEventListener('click', function () {
-            square.classList.add('lightblue');
-           
 
-          
             if (bombe.includes(i)) {
-            
                 square.classList.add('bomba-class');
-             
+                terminaGioco();
+                
             } else {
+                square.classList.add('lightblue');
                 caselleCliccate++;
-        }
-      });
-
-     
+                if (caselleCliccate === numeroIndice - 16) {
+                    terminaGioco();
+                }
+            }
+        });
 
         wrapper.appendChild(square);
     }
-}
+
+    
+
+    function terminaGioco() {
+        alert("Game Over! Punteggio: " + caselleCliccate);
+
+
+
+        const quadrati = document.querySelectorAll('.quadrato');
+
+        for (let i = 0; i < quadrati.length; i++) {
+            const square = quadrati[i];
+    
+            if (bombe.includes(i + 1)) {
+                square.classList.add('bomba-class');
+            } else if (square.classList.contains('lightblue')) {
+                square.classList.add('lightblue');
+            }
+        }
+    }
+    }
 
 
